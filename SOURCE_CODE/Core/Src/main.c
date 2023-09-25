@@ -113,7 +113,7 @@ int main(void)
   }
   void onGreen()
   {
-	  HAL_GPIO_WritePin(GPIOA, GREEN_LED_Pin, SET)
+	  HAL_GPIO_WritePin(GPIOA, GREEN_LED_Pin, SET);
   }
   void offRed()
   {
@@ -125,7 +125,7 @@ int main(void)
   }
   void offGreen()
   {
-	  HAL_GPIO_WritePin(GPIOA, GREEN_LED_Pin, RESET)
+	  HAL_GPIO_WritePin(GPIOA, GREEN_LED_Pin, RESET);
   }
   int redFlag = 1;
   int yellowFlag = 0;
@@ -136,7 +136,7 @@ int main(void)
   offGreen();
   while (1)
   {
-	  if (timer_flag == 1 && red_flag == 1)
+	  if (timer_flag == 1 && redFlag == 1)
 	  {
 		  offRed();
 		  onGreen();
@@ -144,7 +144,7 @@ int main(void)
 		  greenFlag = 1;
 		  setTimer(300);
 	  }
-	  else if (timer_flag == 1 && yellow_flag == 1)
+	  else if (timer_flag == 1 && yellowFlag == 1)
 	  {
 		  offYellow();
 		  onRed();
