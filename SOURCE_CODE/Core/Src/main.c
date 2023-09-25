@@ -91,12 +91,30 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  int counter = 0;
     while (1)
     {
+	 if (counter == 0)
+	  {
+		  HAL_GPIO_WritePin(RED_LED_GPIO_Port, RED_LED_Pin, GPIO_PIN_RESET);
+		  HAL_GPIO_WritePin(YELLOW_LED_GPIO_Port, YELLOW_LED_Pin, GPIO_PIN_SET);
+	  }
+	  if (counter == 200)
+	  {
+		  HAL_GPIO_TogglePin(RED_LED_GPIO_Port, RED_LED_Pin);
+		  HAL_GPIO_TogglePin(YELLOW_LED_GPIO_Port, YELLOW_LED_Pin);
+		  counter = 0;
+	  }
+	  if (counter != 200)
+	  {
+		  counter++;
+	  }
+	  HAL_Delay(10);
       /* USER CODE END WHILE */
 
       /* USER CODE BEGIN 3 */
     }
+}
 /**
   * @brief System Clock Configuration
   * @retval None
