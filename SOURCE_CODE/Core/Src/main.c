@@ -105,27 +105,27 @@ int main(void)
   }
   void onRed()
   {
-	  HAL_GPIO_WritePin(GPIOA, RED_LED_Pin, SET);
+	  HAL_GPIO_WritePin(GPIOA, RED_LED_Pin, RESET);
   }
   void onYellow()
   {
-	  HAL_GPIO_WritePin(GPIOA, YELLOW_LED_Pin, SET);
+	  HAL_GPIO_WritePin(GPIOA, YELLOW_LED_Pin, RESET);
   }
   void onGreen()
   {
-	  HAL_GPIO_WritePin(GPIOA, GREEN_LED_Pin, SET);
+	  HAL_GPIO_WritePin(GPIOA, GREEN_LED_Pin, RESET);
   }
   void offRed()
   {
-	  HAL_GPIO_WritePin(GPIOA, RED_LED_Pin, RESET);
+	  HAL_GPIO_WritePin(GPIOA, RED_LED_Pin, SET);
   }
   void offYellow()
   {
-	  HAL_GPIO_WritePin(GPIOA, YELLOW_LED_Pin, RESET);
+	  HAL_GPIO_WritePin(GPIOA, YELLOW_LED_Pin, SET);
   }
   void offGreen()
   {
-	  HAL_GPIO_WritePin(GPIOA, GREEN_LED_Pin, RESET);
+	  HAL_GPIO_WritePin(GPIOA, GREEN_LED_Pin, SET);
   }
   int redFlag = 1;
   int yellowFlag = 0;

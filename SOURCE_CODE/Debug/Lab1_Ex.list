@@ -125,7 +125,7 @@ int main(void)
   }
   void offGreen()
   {
-	  HAL_GPIO_WritePin(GPIOA, GREEN_LED_Pin, RESET);
+	  HAL_GPIO_WritePin(GPIOA, GREEN_LED_Pin, SET);
   }
   int redFlag = 1;
  800018c:	2301      	movs	r3, #1
@@ -285,8 +285,8 @@ int main(void)
  800028e:	b082      	sub	sp, #8
  8000290:	af00      	add	r7, sp, #0
  8000292:	f8c7 c004 	str.w	ip, [r7, #4]
-	  HAL_GPIO_WritePin(GPIOA, RED_LED_Pin, SET);
- 8000296:	2201      	movs	r2, #1
+	  HAL_GPIO_WritePin(GPIOA, RED_LED_Pin, RESET);
+ 8000296:	2200      	movs	r2, #0
  8000298:	2120      	movs	r1, #32
  800029a:	4803      	ldr	r0, [pc, #12]	; (80002a8 <onRed.5435+0x1c>)
  800029c:	f000 fc34 	bl	8000b08 <HAL_GPIO_WritePin>
@@ -303,8 +303,8 @@ int main(void)
  80002ae:	b082      	sub	sp, #8
  80002b0:	af00      	add	r7, sp, #0
  80002b2:	f8c7 c004 	str.w	ip, [r7, #4]
-	  HAL_GPIO_WritePin(GPIOA, YELLOW_LED_Pin, SET);
- 80002b6:	2201      	movs	r2, #1
+	  HAL_GPIO_WritePin(GPIOA, YELLOW_LED_Pin, RESET);
+ 80002b6:	2200      	movs	r2, #0
  80002b8:	2140      	movs	r1, #64	; 0x40
  80002ba:	4803      	ldr	r0, [pc, #12]	; (80002c8 <onYellow.5437+0x1c>)
  80002bc:	f000 fc24 	bl	8000b08 <HAL_GPIO_WritePin>
@@ -321,8 +321,8 @@ int main(void)
  80002ce:	b082      	sub	sp, #8
  80002d0:	af00      	add	r7, sp, #0
  80002d2:	f8c7 c004 	str.w	ip, [r7, #4]
-	  HAL_GPIO_WritePin(GPIOA, GREEN_LED_Pin, SET);
- 80002d6:	2201      	movs	r2, #1
+	  HAL_GPIO_WritePin(GPIOA, GREEN_LED_Pin, RESET);
+ 80002d6:	2200      	movs	r2, #0
  80002d8:	2180      	movs	r1, #128	; 0x80
  80002da:	4803      	ldr	r0, [pc, #12]	; (80002e8 <onGreen.5439+0x1c>)
  80002dc:	f000 fc14 	bl	8000b08 <HAL_GPIO_WritePin>
@@ -339,8 +339,8 @@ int main(void)
  80002ee:	b082      	sub	sp, #8
  80002f0:	af00      	add	r7, sp, #0
  80002f2:	f8c7 c004 	str.w	ip, [r7, #4]
-	  HAL_GPIO_WritePin(GPIOA, RED_LED_Pin, RESET);
- 80002f6:	2200      	movs	r2, #0
+	  HAL_GPIO_WritePin(GPIOA, RED_LED_Pin, SET);
+ 80002f6:	2201      	movs	r2, #1
  80002f8:	2120      	movs	r1, #32
  80002fa:	4803      	ldr	r0, [pc, #12]	; (8000308 <offRed.5441+0x1c>)
  80002fc:	f000 fc04 	bl	8000b08 <HAL_GPIO_WritePin>
@@ -357,8 +357,8 @@ int main(void)
  800030e:	b082      	sub	sp, #8
  8000310:	af00      	add	r7, sp, #0
  8000312:	f8c7 c004 	str.w	ip, [r7, #4]
-	  HAL_GPIO_WritePin(GPIOA, YELLOW_LED_Pin, RESET);
- 8000316:	2200      	movs	r2, #0
+	  HAL_GPIO_WritePin(GPIOA, YELLOW_LED_Pin, SET);
+ 8000316:	2201      	movs	r2, #1
  8000318:	2140      	movs	r1, #64	; 0x40
  800031a:	4803      	ldr	r0, [pc, #12]	; (8000328 <offYellow.5443+0x1c>)
  800031c:	f000 fbf4 	bl	8000b08 <HAL_GPIO_WritePin>
@@ -375,8 +375,8 @@ int main(void)
  800032e:	b082      	sub	sp, #8
  8000330:	af00      	add	r7, sp, #0
  8000332:	f8c7 c004 	str.w	ip, [r7, #4]
-	  HAL_GPIO_WritePin(GPIOA, GREEN_LED_Pin, RESET);
- 8000336:	2200      	movs	r2, #0
+	  HAL_GPIO_WritePin(GPIOA, GREEN_LED_Pin, SET);
+ 8000336:	2201      	movs	r2, #1
  8000338:	2180      	movs	r1, #128	; 0x80
  800033a:	4803      	ldr	r0, [pc, #12]	; (8000348 <offGreen.5445+0x1c>)
  800033c:	f000 fbe4 	bl	8000b08 <HAL_GPIO_WritePin>
