@@ -91,30 +91,84 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  int counter = 0;
-    while (1)
-    {
-	 if (counter == 0)
+  int timer_counter = 0;
+  int timer_flag = 0;
+  void setTimer(int duration)
+  {
+	  timer_counter = duration ;
+	  timer_flag = 0;
+  }
+  void timerRun()
+  {
+	  if (timer_counter > 0) timer_counter--;
+	  if (timer_counter <= 0) timer_flag = 1;
+  }
+  void onRed()
+  {
+	  HAL_GPIO_WritePin(GPIOA, RED_LED_Pin, SET);
+  }
+  void onYellow()
+  {
+	  HAL_GPIO_WritePin(GPIOA, YELLOW_LED_Pin, SET);
+  }
+  void onGreen()
+  {
+	  HAL_GPIO_WritePin(GPIOA, GREEN_LED_Pin, SET)
+  }
+  void offRed()
+  {
+	  HAL_GPIO_WritePin(GPIOA, RED_LED_Pin, RESET);
+  }
+  void offYellow()
+  {
+	  HAL_GPIO_WritePin(GPIOA, YELLOW_LED_Pin, RESET);
+  }
+  void offGreen()
+  {
+	  HAL_GPIO_WritePin(GPIOA, GREEN_LED_Pin, RESET)
+  }
+  int redFlag = 1;
+  int yellowFlag = 0;
+  int greenFlag = 0;
+  setTimer(500);
+  onRed();
+  offYellow();
+  offGreen();
+  while (1)
+  {
+	  if (timer_flag == 1 && red_flag == 1)
 	  {
-		  HAL_GPIO_WritePin(RED_LED_GPIO_Port, RED_LED_Pin, GPIO_PIN_RESET);
-		  HAL_GPIO_WritePin(YELLOW_LED_GPIO_Port, YELLOW_LED_Pin, GPIO_PIN_SET);
+		  offRed();
+		  onGreen();
+		  redFlag = 0;
+		  greenFlag = 1;
+		  setTimer(300);
 	  }
-	  if (counter == 200)
+	  else if (timer_flag == 1 && yellow_flag == 1)
 	  {
-		  HAL_GPIO_TogglePin(RED_LED_GPIO_Port, RED_LED_Pin);
-		  HAL_GPIO_TogglePin(YELLOW_LED_GPIO_Port, YELLOW_LED_Pin);
-		  counter = 0;
+		  offYellow();
+		  onRed();
+		  yellowFlag = 0;
+		  redFlag = 1;
+		  setTimer(500);
 	  }
-	  if (counter != 200)
+	  else if (timer_flag == 1 && greenFlag == 1)
 	  {
-		  counter++;
+		  offGreen();
+		  onYellow();
+		  yellowFlag = 1;
+		  greenFlag = 0;
+		  setTimer(200);
 	  }
+	  timerRun();
 	  HAL_Delay(10);
-      /* USER CODE END WHILE */
+	  /* USER CODE END WHILE */
 
-      /* USER CODE BEGIN 3 */
-    }
+	  /* USER CODE BEGIN 3 */
+  }
+/* USER CODE END 3 */
 }
+
 /**
   * @brief System Clock Configuration
   * @retval None
@@ -163,14 +217,14 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOA_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(RED_LED_GPIO_Port, RED_LED_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, RED_LED_Pin|YELLOW_LED_Pin|GREEN_LED_Pin, GPIO_PIN_RESET);
 
-  /*Configure GPIO pin : RED_LED_Pin */
-  GPIO_InitStruct.Pin = RED_LED_Pin;
+  /*Configure GPIO pins : RED_LED_Pin YELLOW_LED_Pin GREEN_LED_Pin */
+  GPIO_InitStruct.Pin = RED_LED_Pin|YELLOW_LED_Pin|GREEN_LED_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(RED_LED_GPIO_Port, &GPIO_InitStruct);
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
 }
 
